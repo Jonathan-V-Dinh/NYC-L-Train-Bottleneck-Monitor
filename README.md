@@ -9,3 +9,5 @@ https://docs.transitlab.nyc/
 
 04_prepare_l_train_days.sql creates one row per weekday for each of the 44 directional L train stop pairs selected using 2025 data. December 2024 gives rolling baseline history, 2025 is used for development, and January–April 2026 is saved for evaluation. The view distinguishes missing records from unusable timings, so an unknown weekday can break an alert streak.
 The source was already aggregated by segment and day. I built a weekday calendar for every monitored segment so missing dates were explicit. That way, two slow readings separated by a day with no data couldn’t accidentally trigger a consecutive day alert. ^^^^^^^^^^
+
+The initial AI reccomendation used a 10 weekday baseline. I questioned whether an unusually fast or slow two week period could distort that baseline and recommended testing longer windows. This led to comparing 10-, 20-, and 60-weekday baselines on development data and extending the warm up period to support them.
