@@ -3,6 +3,7 @@
 -- Use 2025 to select pairs. Later evaluation dates do not affect selection
 -- A pair qualifies if at least 95% of expected weekdays have a usable timing
 -- Alot of L-train pairs have extremely large gaps or inconsistent data
+-- We will look for pairs with qualifying data in 2025, then evaluate further in Jan - April 2026 with qualifying pairs
 
 CREATE OR REPLACE VIEW public.l_train_segment_coverage AS
 WITH settings AS (
