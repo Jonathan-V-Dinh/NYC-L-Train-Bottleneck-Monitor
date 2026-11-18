@@ -11,3 +11,10 @@ https://docs.transitlab.nyc/
 The source was already aggregated by segment and day. I built a weekday calendar for every monitored segment so missing dates were explicit. That way, two slow readings separated by a day with no data couldn’t accidentally trigger a consecutive day alert. ^^^^^^^^^^
 
 The initial AI reccomendation used a 10 weekday baseline. I questioned whether an unusually fast or slow two week period could distort that baseline and recommended testing longer windows. This led to comparing 10-, 20-, and 60-weekday baselines on development data and extending the warm up period to support them.
+
+
+Alert boundary = baseline + threshold
+Threshold = whichever is larger: 10 seconds or 3 scaled MADs
+Comparing 10-, 20-, and 60-weekday windows showed that the amount of historical data can change both the baseline and variability threshold. In one June example, the 10 day alert boundary rose enough to stop flagging elevated travel times while the 60 day candidate continued flagging them. We investigated the trade offs between adapting quickly to recent conditions and retaining longer historical context.
+
+The variability threshold is the extra time above the baseline we require before calling a day slow. It gets larger when the previous travel times are more spread out. (We calculate using MAD x 3 or just 10 seconds)
