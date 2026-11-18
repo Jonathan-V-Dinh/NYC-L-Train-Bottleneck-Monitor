@@ -11,7 +11,7 @@ https://docs.transitlab.nyc/
 The source was already aggregated by segment and day. I built a weekday calendar for every monitored segment so missing dates were explicit. That way, two slow readings separated by a day with no data couldn’t accidentally trigger a consecutive day alert. ^^^^^^^^^^
 
 The initial AI reccomendation used a 10 weekday baseline. I questioned whether an unusually fast or slow two week period could distort that baseline and recommended testing longer windows. This led to comparing 10-, 20-, and 60-weekday baselines on development data and extending the warm up period to support them.
-
+- from that original change is alot to debate whether its better to have a more reactive thing that fluctates or one that has a sustained baseline average which keeps the threshold relatively consistent.
 
 Alert boundary = baseline + threshold
 Threshold = whichever is larger: 10 seconds or 3 scaled MADs
