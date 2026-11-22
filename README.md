@@ -1,3 +1,38 @@
+New Read ME Start use stuff from below
+# NYC L Train Bottleneck Monitor
+
+The Question: Where do L trains repeatedly run slower than usual, and when should a transit analyst investigate?
+
+To answer this question I built a PostgreSQL and Python workflow to identify sustained slowdowns, compare alert policies, and present the results in two interactive Tableau dashboards. The goal is to help an operations team prioritize investigations while understanding the consequences/tradeoffs of fewer alerts.
+
+## Main result
+
+In the January–April 2026 evaluation, requiring two consecutive slow weekdays reduced alerts by **78%**, from **235 to 52**, while detecting **13 of 14 reference slowdown episodes**.
+
+Among episodes detected by both policies, the additional delay had a median of **one weekday** and a maximum of **four weekdays**.
+
+These results support an operational choice between investigation workload and detection speed.
+
+## Data and evaluation design
+
+The source contains daily travel times between station pairs, measured separately in each direction(North/South). Travel time includes the stop at the second station.
+
+I imported **1.67 million subway records across 67 months** from TransitLab’s analysis of MTA data. From this dataset, I selected **44 directional L train station pairs** with at least 95% usable weekday data during 2025.
+
+The analysis uses three periods.
+
+| Period | Purpose |
+|---|---|
+| September–December 2024 | Supplies historical observations for the first rolling baselines |
+| January–December 2025 | Develops and compares candidate alert rules |
+| January–April 2026 | Evaluates the same candidate rules on later data reserved from development |
+
+The evaluation covers **86 weekdays and 3,784 segment observations**. Segment selection uses 2025 coverage, so evaluation data does not determine which segments qualify.
+
+Source and license are available through [TransitLab](https://docs.transitlab.nyc/datasets/subway-segment-times/) and [CC BY 4.0](https://docs.transitlab.nyc/start/license/).
+#
+
+
 # NYC L Train Bottleneck Monitor
 The question: Where do trains on the L line repeatedly run slower than usual, and when should a transit analyst flag a segment as a real proble
 This project compares how quickly different alert policies detect persistent slowdowns and how often they flag short lived spikes. The initial data check covers the southbound L from Union Square to 3 Av.
