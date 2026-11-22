@@ -6,6 +6,19 @@ The Question: Where do L trains repeatedly run slower than usual, and when shoul
 
 To answer this question I built a PostgreSQL and Python workflow to identify sustained slowdowns, compare alert policies, and present the results in two interactive Tableau dashboards. The goal is to help an operations team prioritize investigations while understanding the consequences/tradeoffs of fewer alerts.
 
+[View Bottleneck Monitor](https://public.tableau.com:9443/views/LTrainBottleneckMonitor/SegmentMonitor?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+[View Policy Comparison](https://public.tableau.com:9443/views/LTrainOperations/PolicyComparison?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+# Dashboard preview
+
+**Segment Monitor** — select a station pair to investigate its travel time history and alert status.
+
+![Segment Monitor dashboard](docs/images/segment_monitor.png)
+
+**Policy Comparison** — compare investigation workload and detection performance under different cost assumptions.
+
+![Policy Comparison dashboard](docs/images/policy_comparison.png)
+
 ## Data and evaluation design
 
 The source contains daily travel times between station pairs, measured separately in each direction(North/South). Travel time includes the stop at the second station.
