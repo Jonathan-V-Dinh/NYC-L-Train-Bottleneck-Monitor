@@ -32,7 +32,7 @@ The analysis uses three periods.
 | January–December 2025 | Develops and compares candidate alert rules |
 | January–April 2026 | Evaluates the same candidate rules on later data reserved from development |
 
-The evaluation covers **86 weekdays and 3,784 segment observations**.
+The evaluation covers **86 weekdays and 3,784 segment observations**
 
 Source and license are available through [TransitLab](https://docs.transitlab.nyc/datasets/subway-segment-times/) and [CC BY 4.0](https://docs.transitlab.nyc/start/license/).
 
