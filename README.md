@@ -114,6 +114,22 @@ The notebook estimates investigation workload, tests cost assumptions, and expor
 
 I exported this view alongside the notebook’s policy results. The Tableau workbook packages the data into two interactive dashboards for segment investigation and policy comparison.
 
+## Reproducing the analysis
+
+1. Download the 67 monthly Parquet files covering April 2021–October 2026
+   from TransitLab and import them into `public.subway_segment_times`
+   in PostgreSQL.
+2. Run SQL files `01` through `08` in numerical order, including their
+   setup statements before running verification queries.
+3. Configure the notebooks’ PostgreSQL connection, then run
+   `01_baseline_investigation.ipynb` followed by `02_alert_evaluation.ipynb`.
+4. Run `09_dashboard_exports.sql` and save dashboard CSVs in `data/exports/`.
+5. Open the workbook in `tableau/`, reconnect its CSV sources if needed,
+   or view the published dashboards linked above.
+
+Requires PostgreSQL, Jupyter, pandas, NumPy, Matplotlib, SQLAlchemy,
+and psycopg. Keep database credentials out of committed files.
+
 ## Deliberate analytical choices
 
 **Challenged the initial baseline.** The initial AI(Codex) suggestion only using 10 weekdays. I questioned whether an unusually fast or slow stretch could distort the baseline and recommended testing longer windows. This led to comparing 10, 20, and 60 weekdays and extending the warmup to September 2024.
