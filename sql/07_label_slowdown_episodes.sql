@@ -161,7 +161,7 @@ GROUP BY
 
 -- Count qualifying, unknown, and incomplete windows
 -- Incomplete windows occur at the end of the development period
--- They cannot establish seven weekday streaks
+-- They cannot establish a seven weekday streak
 
 SELECT
     window_status,
